@@ -8,24 +8,33 @@ const render = (content) => (document.querySelector("#page_container").innerHTML
 
 router
   .on("/", (match) => {
-    body.dispatchEvent(new CustomEvent("page-changed", { detail: { page: "Home", tab: 0 } }));
+    body.dispatchEvent(new CustomEvent("page-changed", { 
+      detail: { 
+        page: "dasboard",
+         tab: 0 
+        } 
+    }));
     updateTabbar(0);
-    render(`<div class="page"><h1>Home</h1></div>`);
+    render(` <div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">Dashboard
+    </div></div>
+    `);
   })
   .on("/posts", (match) => {
     body.dispatchEvent(new CustomEvent("page-changed", { detail: { page: "Posts", tab: 1 } }));
     updateTabbar(1);
-    render(`<div class="page"><div class="posts">
-    <a href="/posts/1" data-navigo>Post 1</a>
-    <a href="/posts/2" data-navigo>Post 2</a>
-    <a href="/posts/3" data-navigo>Post 3</a>
-    </div>
-  </div>`);
+    render(`<div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">Post
+    </div></div>
+    `);
   })
   .on("/settings", (match) => {
     body.dispatchEvent(new CustomEvent("page-changed", { detail: { page: "Settings", tab: 2 } }));
     updateTabbar(2);
-    render(`<div class="page"><h1>Settings</h1></div>`);
+    render(`<div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">Settings
+    </div></div>
+    `);
   })
   .on("/posts/:id", (match) => {
     console.log(match);
